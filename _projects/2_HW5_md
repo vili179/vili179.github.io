@@ -1,0 +1,62 @@
+---
+name: Building Inventory Analysis Dashboard
+tools: [Python, Altair, HTML, vega-lite]
+image: assets/pngs/cars.png
+description: Interactive visualization dashboard analyzing Illinois government building inventory using Vega-Lite and Altair
+custom_js:
+  - vega.min
+  - vega-lite.min
+  - vega-embed.min
+  - justcharts
+---
+
+
+# Building Inventory Analysis Dashboard
+
+This project presents an interactive dashboard analyzing the Illinois government building inventory dataset using Python, Altair, and Vega-Lite visualizations.
+
+## Visualization 1: Building Space Distribution Analysis
+
+<vegachart schema-url="{{ site.baseurl }}/assets/json/building_analysis1_subset.json" style="width: 100%"></vegachart>
+
+This linked visualization explores the relationship between building square footage distribution across government agencies and their construction timelines. 
+
+**Visual Encoding:**
+- **Left Heatmap**: Position encoding on both axes with color encoding showing building concentration by size and agency
+- **Right Histogram**: Length encoding for building counts with dynamic filtering based on heatmap selections
+
+**Data Processing:**
+- Cleaned dataset by removing records with missing construction years or square footage values
+- Binned square footage into 10 quantile-based groups for better distribution visualization
+- Implemented interactive brushing to connect agency-size patterns with construction timelines
+
+**Insights**: Reveals how different government agencies constructed facilities of various sizes during different historical periods.
+
+## Visualization 2: Building Status and Geographic Analysis
+
+<vegachart schema-url="{{ site.baseurl }}/assets/json/building_analysis2_subset.json" style="width: 100%"></vegachart>
+
+This dashboard examines building status categories and their geographic distribution across Illinois counties.
+
+**Visual Encoding:**
+- **Left Stacked Bar Chart**: Length encoding for total square footage with color encoding by usage type
+- **Right Scatter Plot**: Position encoding for construction year and county, with size and color encoding
+
+**Data Processing:**
+- Aggregated square footage by status and usage categories
+- Calculated summary statistics for county-agency combinations  
+- Created derived age categories to identify historical building patterns
+
+**Insights**: Interactive linking enables exploration of how building status correlates with geographic distribution and construction eras, helping identify regional infrastructure patterns.
+
+---
+
+## Data & Methods
+
+<div class="left">
+{% include elements/button.html link="https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_data/main/building_inventory.csv" text="The Data" %}
+</div>
+
+<div class="right">
+{% include elements/button.html link="https://github.com/vili179/vili179.github.io/blob/main/building_analysis.ipynb" text="The Analysis" %}
+</div>
